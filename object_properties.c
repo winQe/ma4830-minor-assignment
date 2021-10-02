@@ -1,7 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 
-int getProperties(int n, int properties[])
+int getProperties(int n, char properties[][20], float *result){
+    float temp;
+    for(int i=0; i<n; i++){  
+        printf("Input %s> ", properties[i]);
+        scanf("%f", &(temp));
+        *result = temp;
+        result++;
+    }
+    //*result = 1.10;
+}
 
 int main()
 {
@@ -10,9 +19,11 @@ int main()
     int objectType;
 
 
-    /* Checks the validity of user input 
+    /* 
+    Prompts user to input object dimension, either 2D or 3D 
+    Checks the validity of user input 
     IF the input is invalid use while loop to ask the user to input again
-    THEN assign 
+    THEN assign user input to the proper variable to make it compatible for SWITCH CASE 
     */
 
     while (1) {
@@ -56,17 +67,10 @@ int main()
             exit();
         }
     }
-    switch
     
-    
-    //switch(objectType) {
-    //    case 1
 
 
-
-    //}
-
-    printf("%d INPUT %s",objectDimension,objectType_input);
+    // printf("%d INPUT %s",objectDimension,objectType_input);
 
     return 0;
 }
