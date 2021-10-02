@@ -2,13 +2,28 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
+#include <conio.h>
+
+void font_red () { // function to change fontcolor to red
+  printf("\033[1;31m");
+}
+
+void font_blue() { // function to change fontcolor to yellow
+  printf("\033[0;34m");
+}
+
+void font_reset () { // function to reset fontcolor
+  printf("\033[0m");
+}
 
 int getProperties(int n, char properties[][20], float *result){ //universal function to prompt user for parameter input on any object
     float temp = -1;
     char dummy[1000];
     for(int i=0; i<n; i++){  
         while(1){    
-            printf("Input %s> ", properties[i]);    
+            font_blue(); // change font color to blue
+            printf("Input %s> ", properties[i]);
+            font_reset();    
             scanf("%f", &(temp));
             if (temp>0){
                 break;
@@ -41,6 +56,7 @@ int main()
         */
 
         while (1) {
+            font_reset(); //reset textcolor
             printf("Select object dimension\n"
                 "1. 2D\n"
                 "2. 3D\n");
@@ -55,11 +71,15 @@ int main()
                 break;
             }
             else {
-                (printf("Error!!! Please retype a proper input \n"));
+                font_red(); //change font color to red
+                printf("Error!!! Please retype a proper input \n");
+                font_reset();
             }
         }
         
         while(1){
+            font_reset();
+
             if (objectDimension == 1) {
                 printf("Select 2D object type\n"
                 "1. Rectangle\n"
@@ -87,7 +107,9 @@ int main()
                 break;
             }        
             else {
-                (printf("Error!!! Please retype a proper input \n"));
+                font_red();
+                printf("Error!!! Please retype a proper input \n");
+                font_reset();
             }
 
             }
@@ -127,11 +149,15 @@ int main()
                 break;
                 }
                 else {
+                    font_red();
                     printf("Error!!! Please retype a proper input \n");
+                    font_reset();
                 }
             }
             else {
+                font_red();
                 printf("Error!!!");
+                font_reset();
                 exit(1);
             }
         }
@@ -229,7 +255,9 @@ int main()
                 exit(1);
         }
     reinput: //Ask user whether to exit or loop the program again
+        font_blue();
         printf("Would you like to calculate another object? ");
+        font_reset();
         scanf("%s",again);
         if (strcasecmp(again,"No") == 0 || strcasecmp(again,"N") == 0 || strcasecmp(again,"0") == 0) {
             break;
