@@ -3,11 +3,10 @@
 #include <stdlib.h>
 #include <math.h>
 
-int getProperties(int n, char properties[][20], float *result){
+int getProperties(int n, char properties[][20], float *result){ //universal function to prompt user for parameter input on any object
     float temp = -1;
     char dummy[1000];
     for(int i=0; i<n; i++){  
-        
         while(1){    
             printf("Input %s> ", properties[i]);    
             scanf("%f", &(temp));
@@ -16,7 +15,7 @@ int getProperties(int n, char properties[][20], float *result){
             }
             else {
                 printf("Please input a valid decimal number!\n");
-                scanf("%s", dummy);
+                scanf("%s", dummy); // to clear the buffer
             }
         }
         *result = temp;
@@ -27,9 +26,9 @@ int getProperties(int n, char properties[][20], float *result){
 int main()
 {
     char objectDimension_input[20]; //declare a string to store object type input
-    int objectDimension=-1;
-    char objectType_input[20];
-    int objectType;
+    int objectDimension=-1; //store object dimension, initally -1 for error handling
+    char objectType_input[20]; //store user input regarding object type
+    int objectType=-1; //used for object type switch case, initally -1 for error handling
     char again[10]; //string to determine where to ask loop the program again or not
 
     while(1) {
@@ -68,8 +67,9 @@ int main()
                 "3. Circle\n"
                 "4. RightTriangle\n");
 
-            scanf("%s",objectType_input);
-
+            scanf("%s",objectType_input); //prompt user for object type
+            
+            //Assign user input to a variable which will be used in switch case
             if (strcasecmp(objectType_input, "Rectangle") == 0 || strcmp(objectType_input, "1") == 0){
                 objectType = 1; 
                 break;
@@ -228,7 +228,7 @@ int main()
                 printf("Error, invalid object type!");
                 exit(1);
         }
-    reinput:
+    reinput: //Ask user whether to exit or loop the program again
         printf("Would you like to calculate another object? ");
         scanf("%s",again);
         if (strcasecmp(again,"No") == 0 || strcasecmp(again,"N") == 0 || strcasecmp(again,"0") == 0) {
@@ -237,7 +237,7 @@ int main()
         else if(strcasecmp(again,"Yes") == 0 || strcasecmp(again,"y") == 0 || strcasecmp(again,"1") == 0) {
             continue;
             }
-        else{
+        else{ //error handling
             printf("Invalid input, please type in (Y)es/(N)o! \n");
             goto reinput;
             }
