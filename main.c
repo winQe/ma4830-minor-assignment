@@ -60,7 +60,6 @@ int main()
     char objectType_input[20]; //store user input regarding object type
     int objectType=-1; //used for object type switch case, initally -1 for error handling
     char again[10]; //string to determine where to ask loop the program again or not
-    main_menu:
     while(1) {
 
         /* 
