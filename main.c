@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <unistd.h>
+//#include <conio.h>
 
 #if defined(_WIN32)
     #define PLATFORM_NAME "Windows" // Windows
@@ -53,13 +54,14 @@ int getProperties(int n, char properties[][20], float *result){ //universal func
 }
 
 int main()
-{
+{   
+    int backToMenu = -1;
     char objectDimension_input[20]; //declare a string to store object type input
     int objectDimension=-1; //store object dimension, initally -1 for error handling
     char objectType_input[20]; //store user input regarding object type
     int objectType=-1; //used for object type switch case, initally -1 for error handling
     char again[10]; //string to determine where to ask loop the program again or not
-
+    main_menu:
     while(1) {
 
         /* 
@@ -102,34 +104,38 @@ int main()
                 "1. Rectangle\n"
                 "2. Square\n"
                 "3. Circle\n"
-                "4. RightTriangle\n");
+                "4. RightTriangle\n"
+                "5. Go Back to Main Menu\n");
 
-            scanf("%s",objectType_input); //prompt user for object type
+                scanf("%s",objectType_input); //prompt user for object type
             
             //Assign user input to a variable which will be used in switch case
-            if (strcasecmp(objectType_input, "Rectangle") == 0 || strcmp(objectType_input, "1") == 0){
-                objectType = 1; 
-                break;
-            }
-            else if (strcasecmp(objectType_input, "Square") == 0 || strcmp(objectType_input, "2") == 0 ){
-                objectType = 2;
-                break;
-            }
-            else if (strcasecmp(objectType_input, "Circle") == 0 || strcmp(objectType_input, "3") == 0 ){
-                objectType = 3;
-                break;
-            }
-            else if (strcasecmp(objectType_input, "RightTriangle") == 0 || strcmp(objectType_input, "4") == 0 ){
-                objectType = 4;
-                break;
-            }        
-            else {
-                font_red();
-                printf("Error!!! Please retype a proper input \n");
-                font_reset();
-                sleep(2);
-            }
-
+                if (strcasecmp(objectType_input, "Rectangle") == 0 || strcmp(objectType_input, "1") == 0){
+                    objectType = 1; 
+                    break;
+                }
+                else if (strcasecmp(objectType_input, "Square") == 0 || strcmp(objectType_input, "2") == 0 ){
+                    objectType = 2;
+                    break;
+                }
+                else if (strcasecmp(objectType_input, "Circle") == 0 || strcmp(objectType_input, "3") == 0 ){
+                    objectType = 3;
+                    break;
+                }
+                else if (strcasecmp(objectType_input, "RightTriangle") == 0 || strcmp(objectType_input, "4") == 0 ){
+                    objectType = 4;
+                    break;
+                }
+                else if (strcasecmp(objectType_input, "menu") == 0 || strcmp(objectType_input, "5") == 0 ){
+                    backToMenu = 1;
+                    break;
+                }           
+                else {
+                    font_red();
+                    printf("Error!!! Please retype a proper input \n");
+                    font_reset();
+                    sleep(2);
+                }
             }
             else if (objectDimension == 2) {
                 clear();
@@ -139,33 +145,38 @@ int main()
                 "3. Sphere\n" 
                 "4. Cylinder\n" 
                 "5. SquarePyramid\n" 
-                "6. Cone\n");
+                "6. Cone\n"
+                "7. Back to Main Menu\n");
 
                 scanf("%s",objectType_input);
 
                 if (strcasecmp(objectType_input, "Cube") == 0 || strcmp(objectType_input, "1") == 0){ 
                     objectType = 101; 
-                break;
+                    break;
                 }
                 else if (strcasecmp(objectType_input, "Cuboid") == 0 || strcmp(objectType_input, "2") == 0 ){
                     objectType  = 102;
-                break;
+                    break;
                 }
                 else if (strcasecmp(objectType_input, "Sphere") == 0 || strcmp(objectType_input, "3") == 0 ){
                     objectType  = 103;
-                break;
+                    break;
                 }
                 else if (strcasecmp(objectType_input, "Cylinder") == 0 || strcmp(objectType_input, "4") == 0 ){
                     objectType  = 104;
-                break;
+                    break;
                 }
                 else if (strcasecmp(objectType_input, "SquarePyramid") == 0 || strcmp(objectType_input, "5") == 0 ){
                     objectType  = 105;
-                break;
+                    break;
                 }
                 else if (strcasecmp(objectType_input, "Cone") == 0 || strcmp(objectType_input, "6") == 0 ){
                     objectType  = 106;
-                break;
+                    break;
+                }
+                else if (strcasecmp(objectType_input, "menu") == 0 || strcmp(objectType_input, "7") == 0 ){
+                    backToMenu = 1;
+                    break;
                 }
                 else {
                     font_red();
@@ -180,6 +191,9 @@ int main()
                 font_reset();
                 exit(1);
             }
+        }
+        if (backToMenu != -1) {
+            continue;
         }
         clear();
         switch(objectType)
