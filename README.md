@@ -33,4 +33,4 @@ Finally, the code can be ran using:
 # Additional Documentations
 Can be obtained [here!](https://docs.google.com/document/d/1WzEvdexGbR8SUF3zttVJmig7dYcfQEl2osKGMFYxcN8/edit?usp=sharing).
 
-Please ask any queries to [adinemail] or GABR0022@e.ntu.edu.sg.
+Please ask any queries to ANDH0002@e.ntu.edu.sg or GABR0022@e.ntu.edu.sg.
