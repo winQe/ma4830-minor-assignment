@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <unistd.h>
-//#include <conio.h>
 
 #if defined(_WIN32)
     #define PLATFORM_NAME "Windows" // Windows
