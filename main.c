@@ -191,6 +191,7 @@ int main()
             }
         }
         if (backToMenu != -1) {
+            backToMenu = -1;
             continue;
         }
         clear();
