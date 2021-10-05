@@ -10,7 +10,7 @@
     #define PLATFORM_NAME "NULL"
 #endif
 
-void clear(){
+void clear(){ //Clear terminal screen
     if (PLATFORM_NAME == "Windows"){
         system("cls");
     }
@@ -190,7 +190,7 @@ int main()
                 exit(1);
             }
         }
-        if (backToMenu != -1) {
+        if (backToMenu != -1) { //Go back to main menu
             backToMenu = -1;
             continue;
         }
